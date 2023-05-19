@@ -13,4 +13,4 @@ RX: UART receive
 GLITCH: pulse out
 GLITCHn: inverted pulse out
 ## Caveat
-I want the timers (glitch one-shot and the delay) to be precise (that's why I'm using an FPGA); therefore, I'm using the FPGA's PLL. Unfortunately this means I have to use a primitive that ties me to a specific FPGA. I'll start with an Lattice ICE40, then maybe an Altera (Intel) Cyclone4, and expand from there. 
+I want the timers (glitch one-shot and the delay) to be precise (that's why I'm using an FPGA); therefore, I'm using the FPGA's PLL. Unfortunately this means I have to use a primitive that ties me to a specific FPGA. I'll start with an Icestick (Lattice ICE40HX1K), then maybe an Altera (Intel) Cyclone4, and expand from there. 
