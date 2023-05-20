@@ -14,7 +14,13 @@ all: ${PROJ}.bin
 %.json: verilog/glitchGen_top.v
 	yosys -p "read_verilog $<; synth_ice40 -flatten -json $@"
 
-.PHONY: prog
+.PHONY: prog clean sim
 
 prog:
 	iceprog ${PROJ}.bin
+
+clean:
+	rm -rf .bin
+
+sim:
+	iverilog -I verilog -o glitchGen_top_tb.out verilog/glitchGen_top_tb.v
