@@ -1,0 +1,7 @@
+                           ___________ 
+                          |   pulse   |
+      delay  width        |   width   |
+      100000000 ns        | 100000 ns |
+__________________________|           |_________
+
+tab betwixt fields     space to manually trigger
