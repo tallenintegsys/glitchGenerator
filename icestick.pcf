@@ -59,9 +59,10 @@ set_io --nowarn SD 107
 #     ----------
 #
 set_io --nowarn PMOD1 78
-set_io --nowarn PMOD2 79
+set_io --nowarn -pullup yes PMOD2 79
 set_io --nowarn PMOD3 80
 set_io --nowarn PMOD4 81
+set_frequency PMOD4 200
 set_io --nowarn PMOD7 87
 set_io --nowarn PMOD8 88
 set_io --nowarn PMOD9 90
