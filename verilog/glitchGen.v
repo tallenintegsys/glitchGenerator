@@ -2,7 +2,7 @@
 
 module glitchGen #(
   parameter DELAY_COUNT  = 32'd200_000_000, //600_000_000;
-  parameter PWIDTH_COUNT = 32'd200) (
+  parameter GWIDTH_COUNT = 32'd200) (
   input      clk,    //12MHz oscillator
   output     done_indicator,     //DONE
   output     delay_indicator,     //DELAY
@@ -41,7 +41,7 @@ always @ (posedge pll_clk_out) begin
       width_counter <= width_counter + 32'd1;
       delay_indicator <= 1'b0;
       glitch <= 1'd1;
-      if (width_counter == PWIDTH_COUNT) state <= DONE;
+      if (width_counter == GWIDTH_COUNT) state <= DONE;
     end
     DONE: begin
       done_indicator <= 1'b1;
