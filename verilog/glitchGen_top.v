@@ -2,9 +2,9 @@
 
 module glitchGen_top (
   input   CLK,      //12MHz oscillator
-  output  D3,       //DONE
-  output  D4,       //DELAY
-  output  D5,       //locked
+  output  D3,       //DONE indicator
+  output  D4,       //DELAY indicator
+  output  D5,       //PLL locked
   input   PMOD2,    //trigger
   output  PMOD4);   //glitch
 
@@ -21,8 +21,8 @@ assign trigger = PMOD2;
 assign PMOD4 = glitch;
 
 glitchGen #(
-  .DELAY_COUNT(32'd204_000_000), // 1_s
-  .GWIDTH_COUNT(32'd204))        // 1000_ns
+  .DELAY(64'd1_000_000_000),    // 1_s
+  .GWIDTH_COUNT(32'd1_000))     // 1000_ns
 glitchGen0 (
   .clk(CLK),    //12MHz oscillator in
   .done_indicator(done_indicator),

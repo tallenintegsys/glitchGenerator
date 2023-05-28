@@ -1,21 +1,24 @@
 `timescale 1ns/1ns
 
 module glitchGen #(
-  parameter DELAY_COUNT  = 32'd200_000_000, //600_000_000;
-  parameter GWIDTH_COUNT = 32'd200) (
-  input      clk,    //12MHz oscillator
-  output     done_indicator,     //DONE
-  output     delay_indicator,     //DELAY
-  output     locked_indicator,     //locked
-  input      trigger,  //trigger
-  output     glitch);   //glitch
+  parameter DELAY  = 64'd100_000_000,   //100_s
+  parameter GWIDTH = 32'd200) (   //200_ns
+  input      clk,               //12MHz oscillator
+  output     done_indicator,    //DONE
+  output     delay_indicator,   //DELAY
+  output     locked_indicator,  //locked
+  input      trigger,           //trigger
+  output     glitch);           //glitch
 
 localparam READY = 0;
 localparam DELAY = 1;
 localparam PULSE = 2;
 localparam DONE  = 3;
 
-reg   [31:0] delay_counter = 0;
+localparam DELAY_COUNT = DELAY / 64'd5 * 64'd204_000_000;
+localparam GWIDTH_COUNT = GWIDTH / 64'd5 * 64'd204_000_000;
+
+reg   [63:0] delay_counter = 0;
 reg   [31:0] width_counter = 0;
 reg   [1:0] state = READY;
 wire  pll_clk_out;
@@ -27,12 +30,12 @@ reg   glitch = 1'b0;
 always @ (posedge pll_clk_out) begin
   case (state)
     READY: begin
-      delay_counter <= 32'd0;
+      delay_counter <= 64'd0;
       width_counter <= 32'd0;
       if (trigger == 1'b1) state <= DELAY;
     end
     DELAY: begin
-      delay_counter <= delay_counter + 32'd1;
+      delay_counter <= delay_counter + 64'd1;
       done_indicator <= 1'd0;
       delay_indicator <= 1'b1;
       if (delay_counter == DELAY_COUNT) state <= PULSE;
