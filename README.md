@@ -10,11 +10,11 @@ the goal to to dump said flash.
 ## Background
 Yosys is fast, consequently one can just alter the Verilog and re-synthesize. 
 This is the incept in a series of glitch generators:
-#### parameterizedGlitchGenerator (this repo)
+#### glitchGenerator (this repo)
 This version requires re-synthesys everytime you want to changing timing 
 parameters. It is a one-shot; that is, it generates one glitch pulse a 
 specified time after trigger.
-#### UARTconfiguredGlitchGenerator
+#### UARTconfiguredGlitchGenerator (another repo)
 My goal is to get this to the point where one can set values via UART and skip 
 the re-synthesis. The goal here is to send a series of delays, and gwidths; 
 thus, after trigger it waits out the first delay, delay<sub>1</sub>, and then 
