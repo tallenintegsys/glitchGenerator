@@ -12,8 +12,8 @@ module glitchGen #(
 
 enum logic [1:0] {READY, DELAY, PULSE, DONE} state;
 
-localparam DELAY_COUNT = DELAY_TIME / (64'd204_000_000 * 64'd5);
-localparam GLITCH_COUNT = GLITCH_TIME / (64'd204_000_000 * 64'd5);
+localparam DELAY_COUNT = DELAY_TIME / 64'd5;
+localparam GLITCH_COUNT = GLITCH_TIME / 64'd5;
 
 reg   [63:0] delay_counter = 0;
 reg   [63:0] width_counter = 0;
@@ -23,6 +23,7 @@ initial begin
     done_indicator = 0;
     delay_indicator = 0;
     glitch = 1'b0;
+    state = READY;
 end
 
 always @ (posedge pll_clk) begin

@@ -1,5 +1,6 @@
 module glitchGen_top (
   input   CLK,      //12MHz oscillator
+  output  D2,
   output  D3,       //DONE indicator
   output  D4,       //DELAY indicator
   output  D5,       //PLL locked
@@ -12,6 +13,7 @@ wire  locked_indicator;
 wire  trigger;
 wire  glitch;
 
+assign D2 = trigger;
 assign D3 = done_indicator;
 assign D4 = delay_indicator;
 assign D5 = locked_indicator;
