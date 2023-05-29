@@ -22,7 +22,7 @@ assign PMOD4 = glitch;
 
 glitchGen #(
   .DELAY(64'd1_000_000_000),    // 1_s
-  .GWIDTH_COUNT(32'd1_000))     // 1000_ns
+  .GWIDTH(32'd1_000))     // 1000_ns
 glitchGen0 (
   .clk(CLK),    //12MHz oscillator in
   .done_indicator(done_indicator),
