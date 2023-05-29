@@ -15,8 +15,8 @@ localparam DELAY = 1;
 localparam PULSE = 2;
 localparam DONE  = 3;
 
-localparam DELAY_COUNT = DELAY_TIME / 64'd5 * 64'd204_000_000;
-localparam GLITCH_COUNT = GLITCH_TIME / 64'd5 * 64'd204_000_000;
+localparam DELAY_COUNT = DELAY_TIME / (64'd5 * 64'd204_000_000);
+localparam GLITCH_COUNT = GLITCH_TIME / (64'd5 * 64'd204_000_000);
 
 reg   [63:0] delay_counter = 0;
 reg   [31:0] width_counter = 0;

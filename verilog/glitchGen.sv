@@ -1,19 +1,19 @@
 `timescale 1ns/1ns
 
 module glitchGen #(
-  parameter DELAY_TIME  = 64'd100_000_000,  //100_s
-  parameter GLITCH_TIME = 32'd200) (        //200_ns
-  input      clk,                           //12MHz oscillator
-  output     done_indicator,                //DONE
-  output     delay_indicator,               //DELAY
-  output     locked_indicator,              //locked
-  input      trigger,                       //trigger
-  output     glitch);                       //glitch
+  parameter DELAY_TIME  = 64'd1_000_000,  //1_s
+  parameter GLITCH_TIME = 32'd5) (            //5_ns
+  input      clk,                               //12MHz oscillator
+  output     done_indicator,                    //DONE
+  output     delay_indicator,                   //DELAY
+  output     locked_indicator,                  //locked
+  input      trigger,                           //trigger
+  output     glitch);                           //glitch
 
 enum {READY = 0,  DELAY = 1,  PULSE = 2,  DONE  = 3} state;
 
-localparam DELAY_COUNT = DELAY_TIME / 64'd5 * 64'd204_000_000;
-localparam GLITCH_COUNT = GLITCH_TIME / 64'd5 * 64'd204_000_000;
+localparam DELAY_COUNT = DELAY_TIME / (64'204_000_000 * 64'd5);
+localparam GLITCH_COUNT = GLITCH_TIME / 64'204_000_000 * 64'd5);
 
 reg   [63:0] delay_counter = 0;
 reg   [31:0] width_counter = 0;
