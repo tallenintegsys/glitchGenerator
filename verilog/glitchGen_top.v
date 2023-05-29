@@ -1,5 +1,3 @@
-`include "glitchGen.v"
-
 module glitchGen_top (
   input   CLK,      //12MHz oscillator
   output  D3,       //DONE indicator

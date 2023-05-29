@@ -1,33 +1,35 @@
-`timescale 1ns/1ns
+//`timescale 1ns/1ns
 
 module glitchGen #(
   parameter DELAY_TIME  = 64'd1_000_000,  //1_s
-  parameter GLITCH_TIME = 32'd5) (            //5_ns
-  input      clk,                               //12MHz oscillator
-  output     done_indicator,                    //DONE
-  output     delay_indicator,                   //DELAY
-  output     locked_indicator,                  //locked
-  input      trigger,                           //trigger
-  output     glitch);                           //glitch
+  parameter GLITCH_TIME = 64'd5) (        //5_ns
+  input  logic  clk,                //12MHz oscillator
+  output logic  done_indicator,     //DONE
+  output logic  delay_indicator,    //DELAY
+  output logic  locked_indicator,   //locked
+  input  logic  trigger,            //trigger
+  output logic  glitch);            //glitch
 
-enum {READY = 0,  DELAY = 1,  PULSE = 2,  DONE  = 3} state;
+enum {READY, DELAY, PULSE, DONE} state;
 
-localparam DELAY_COUNT = DELAY_TIME / (64'204_000_000 * 64'd5);
-localparam GLITCH_COUNT = GLITCH_TIME / 64'204_000_000 * 64'd5);
+localparam DELAY_COUNT = DELAY_TIME / (64'd204_000_000 * 64'd5);
+localparam GLITCH_COUNT = GLITCH_TIME / (64'd204_000_000 * 64'd5);
 
 reg   [63:0] delay_counter = 0;
-reg   [31:0] width_counter = 0;
+reg   [63:0] width_counter = 0;
 wire  pll_clk_out;
-reg   done_indicator = 0;
-reg   delay_indicator = 0;
-wire  trigger; 
-reg   glitch = 1'b0;
+
+initial begin
+    done_indicator = 0;
+    delay_indicator = 0;
+    glitch = 1'b0;
+end
 
 always @ (posedge pll_clk_out) begin
   case (state)
     READY: begin
       delay_counter <= 64'd0;
-      width_counter <= 32'd0;
+      width_counter <= 64'd0;
       if (trigger == 1'b1) state <= DELAY;
     end
     DELAY: begin
@@ -37,7 +39,7 @@ always @ (posedge pll_clk_out) begin
       if (delay_counter == DELAY_COUNT) state <= PULSE;
     end
     PULSE: begin
-      width_counter <= width_counter + 32'd1;
+      width_counter <= width_counter + 64'd1;
       delay_indicator <= 1'b0;
       glitch <= 1'd1;
       if (width_counter == GLITCH_COUNT) state <= DONE;

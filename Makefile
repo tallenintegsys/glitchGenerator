@@ -1,4 +1,3 @@
-
 PROJ = glitchGen
 PCF = icestick.pcf
 DEVICE = 1k
@@ -12,7 +11,7 @@ all: ${PROJ}.bin
 	nextpnr-ice40 --hx1k --package tq144 --json $< --pcf $(PCF) --asc $@
 
 %.json: verilog/*
-	yosys -p "read_verilog -Iverilog verilog/glitchGen_top.v; synth_ice40 -flatten -json $@"
+	yosys -p "read_verilog -sv -Iverilog $^; synth_ice40 -flatten -json $@"
 
 .PHONY: prog clean sim
 
