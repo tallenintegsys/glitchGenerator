@@ -10,7 +10,7 @@ module glitchGen #(
   input  logic  trigger,            //trigger
   output logic  glitch);            //glitch
 
-enum {READY, DELAY, PULSE, DONE} state;
+enum logic [1:0] {READY, DELAY, PULSE, DONE} state;
 
 localparam DELAY_COUNT = DELAY_TIME / (64'd204_000_000 * 64'd5);
 localparam GLITCH_COUNT = GLITCH_TIME / (64'd204_000_000 * 64'd5);
