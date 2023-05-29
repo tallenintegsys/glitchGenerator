@@ -17,7 +17,7 @@ localparam GLITCH_COUNT = GLITCH_TIME / (64'd204_000_000 * 64'd5);
 
 reg   [63:0] delay_counter = 0;
 reg   [63:0] width_counter = 0;
-wire  pll_clk_out;
+wire  pll_clk;
 
 initial begin
     done_indicator = 0;
@@ -25,7 +25,7 @@ initial begin
     glitch = 1'b0;
 end
 
-always @ (posedge pll_clk_out) begin
+always @ (posedge pll_clk) begin
   case (state)
     READY: begin
       delay_counter <= 64'd0;
@@ -64,6 +64,6 @@ pll ( // clk * (DIVF + 1) / 2^DIVQ * (DIVR + 1)
         .RESETB(1'b1),
         .BYPASS(1'b0),
         .REFERENCECLK(clk),
-        .PLLOUTCORE(pll_clk_out));
+        .PLLOUTCORE(pll_clk));
 
 endmodule
