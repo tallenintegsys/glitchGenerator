@@ -1,5 +1,7 @@
 # glitchGenerator
 Really a fancy pulse generator specialized to generating glitch pulses
+![Glitch Pulse](/doc/SDS00001.png)
+
 ## Purpose
 Generate glitch pulses of at specific time after a trigger and for a specific 
 duration. By pulling Vcpp (sometimes called Vcap) low (typically using a 
