@@ -1,6 +1,9 @@
 # glitchGenerator
-Really a fancy pulse generator specialized to generating glitch pulses
-![Glitch Pulse](/doc/SDS00001.png)
+<img align="right" src="/doc/SDS00001.png">
+Really a fancy pulse generator specialized to generating glitch pulses with 
+a theoretical resolution down to 5_ns but in practice I'm seeing 14_ns (see
+below), it's wrong but it's consistently wrong. I got tired of knocking up
+variations of the same thing in the SCIF so I'm trying to work up a generic.
 
 ## Purpose
 Generate glitch pulses of at specific time after a trigger and for a specific 
@@ -13,7 +16,7 @@ the goal to to dump said flash.
 Yosys is fast, consequently one can just alter the Verilog and re-synthesize. 
 This is the incept in a series of glitch generators:
 #### glitchGenerator (this repo)
-This version requires re-synthesys everytime you want to changing timing 
+This version requires re-synthesis every time you want to changing timing 
 parameters. It is a one-shot; that is, it generates one glitch pulse a 
 specified time after trigger.
 #### UARTconfiguredGlitchGenerator (another repo)
@@ -25,7 +28,7 @@ sends a glitch pulse of duration gwidth<sub>1</sub>, then it waits out the
 duiration gwidth<sub>2</sub> and so on.   
 delay<sub>1</sub> gwidth<sub>1</sub> delay<sub>2</sub> gwidth<sub>2</sub> ... 
 delay<sub>n</sub> gwidth<sub>n</sub>   
-eg:```1000000000 65 1000000 60 10000 60``` means wait 1_s, generaate a 65_ns 
+eg:```1000000000 65 1000000 60 10000 60``` means wait 1_s, generate a 65_ns 
 glitch pulse, wait 100_&mu;s, generate a glitch pulse of 60_ns and finally 
 wait 10_&mu;s, generate a glitch pulse of 60_ns. Currently the resolution 
 is about 5_ns. (204_MHz clock I'm still borking with the PLL)    
