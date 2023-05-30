@@ -7,7 +7,7 @@ variations of the same thing in the SCIF so I'm trying to work up a generic.
 
 ## Purpose
 Generate glitch pulses of at specific time after a trigger and for a specific 
-duration. By pulling Vcpp (sometimes called Vcap) low (typically using a 
+duration. By pulling Vcpp (sometimes called Vcpu) low (typically using a 
 MOSFET) at the right time for the right duration (a bit of a black art) one 
 can cause instructions to be seemingly skipped (in practice the wrong 
 operation is performed). This is most useful for SOCs with onboard flash where 
