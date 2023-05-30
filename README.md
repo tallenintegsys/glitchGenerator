@@ -2,8 +2,8 @@
 <img align="right" src="/doc/SDS00001.png">
 Really a fancy pulse generator specialized to generating glitch pulses with 
 a theoretical resolution down to 5_ns but in practice I'm seeing 14_ns (see
-below), it's wrong but it's consistently wrong. I got tired of knocking up
-variations of the same thing in the SCIF so I'm trying to work up a generic.
+below), it's wrong but it's consistently wrong (very low jitter). I got tired 
+of knocking up variations of the same thing so I'm trying to work up a generic.
 
 ## Purpose
 Generate glitch pulses of at specific time after a trigger and for a specific 
