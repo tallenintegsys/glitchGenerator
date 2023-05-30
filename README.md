@@ -55,7 +55,7 @@ and expand from there.
 I'm still trying to sort out some timing issues, it's off by about 14_ns, 
 not really sure why. I had the PLL running at 300_MHz but that proved 
 unreliable. This is good enough for the MCUs I'm borking with (150_MHz or so).
-![1_us off by 14_us](/doc/1000nsOutBy14ns.png)
-![5_us off by 14_ns](/doc5usOutBy14ns.png)
+![1_us off by 14_us](/doc/1usOutBy14ns.png)
+![5_us off by 14_ns](/doc/5usOutBy14ns.png)
  
  
