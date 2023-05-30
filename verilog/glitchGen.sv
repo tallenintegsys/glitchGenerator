@@ -1,8 +1,14 @@
-//`timescale 1ns/1ns
-
+///////////////////////////////////////////////////////////////////////////////
+// Glitch Generator
+// This module waits for DELAY time (1_000_000_000 = 1_s) and then generates
+// a "glitch" pulse. Currently the internal clock frequency is about 204_MHz.
+// Empirically, I'm seeing resoluions of about +/- 15_ns but the theoretical
+// resolution is 5_ns. The default (below) is to generate a 1000_ns glitch
+// (the minimum) pulse after a delay of 1_s.
+///////////////////////////////////////////////////////////////////////////////
 module glitchGen #(
-  parameter DELAY_TIME  = 64'd1_000_000,  //1_s
-  parameter GLITCH_TIME = 64'd5) (        //5_ns
+  parameter DELAY_TIME  = 64'd1_000_000_000,  //1_s
+  parameter GLITCH_TIME = 64'd1_000) (        //1000_ns
   input  logic  clk,                //12MHz oscillator
   output logic  done_indicator,     //DONE
   output logic  delay_indicator,    //DELAY
@@ -13,7 +19,7 @@ module glitchGen #(
 enum logic [1:0] {READY, DELAY, PULSE, DONE} state;
 
 localparam DELAY_COUNT = DELAY_TIME / 64'd5;
-localparam GLITCH_COUNT = GLITCH_TIME * 64'd100000 / 64'd490150;
+localparam GLITCH_COUNT = GLITCH_TIME * 64'd2045 / 64'd10000;
 
 reg   [63:0] delay_counter = 0;
 reg   [63:0] width_counter = 0;
