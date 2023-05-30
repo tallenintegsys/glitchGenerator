@@ -47,6 +47,24 @@ GLITCH: pulse out
 GLITCHn: inverted pulse out
 #### MOSFETs
 Things like chipwhisperer use these, and refer to them as a crowbar.   
+<div>
+ 
+<figure style="width: 40%">
+  <img alt="Datasheet" src="/doc/IRF7807.png" style="width: 30%">
+  <figcaption>
+   <a href="https://www.infineon.com/dgdl/irf7807zpbf.pdf?fileId=5546d462533600a401535608622e1ce8" target="_blank"/>IRF7807ZTR</a>
+ </figcaption>
+</figure>
+
+
+ <figure style="width: 40%">
+  <img alt="Datasheet" src="/doc/IRLML2502.png" style="width: 30%">
+  <figcaption>
+   <a href="https://www.infineon.com/dgdl/Infineon-IRLML2502-DataSheet-v01_01-EN.pdf?fileId=5546d462533600a401535668048e2606" target="_blank"/>IRLML2502</a>
+ </figcaption>
+</figure>
+</div>
+ 
 IRF7807ZTR   [https://www.infineon.com/dgdl/irf7807zpbf.pdf?fileId=5546d462533600a401535608622e1ce8]   
 IRLML2502    [https://www.infineon.com/dgdl/Infineon-IRLML2502-DataSheet-v01_01-EN.pdf?fileId=5546d462533600a401535668048e2606]  
 ## Caveat
